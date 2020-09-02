@@ -31,25 +31,6 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
-    fetch(
-      'https://amazon-product-search.p.rapidapi.com/amazon-search/product?asin=B081Q5RCMV&region=com',
-      {
-        method: 'GET',
-        headers: {
-          'x-rapidapi-host': 'amazon-product-search.p.rapidapi.com',
-          'x-rapidapi-key': 'VIEW-ONLY',
-        },
-      }
-    )
-      .then(response => {
-        console.log(response)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  })
-
   console.log('USER IS >>>', user)
 
   return (
