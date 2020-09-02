@@ -13,7 +13,6 @@ const initialState = {
 }
 
 function reducer(state, action) {
-  console.log(action)
   switch (action.type) {
     case ACTIONS.ADD_TO_BASKET:
       return {...state, basket: [...state.basket, action.payload.item]}
