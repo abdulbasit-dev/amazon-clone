@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import './Product.css'
 import {BasketContext, ACTIONS} from '../StateProvider'
+import {motion} from 'framer-motion'
 
 function Product({id, title, image, price, rating}) {
   const [state, dispatch] = useContext(BasketContext)
@@ -10,7 +11,12 @@ function Product({id, title, image, price, rating}) {
   }
 
   return (
-    <div className='product'>
+    <motion.div
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{delay: '300ms'}}
+      className='product'
+    >
       <div className='product__info'>
         <p>{title}</p>
         <p className='product__price'>
@@ -29,7 +35,7 @@ function Product({id, title, image, price, rating}) {
       </div>
       <img src={image} alt='' />
       <button onClick={addToBasket}>Add to basket</button>
-    </div>
+    </motion.div>
   )
 }
 

@@ -13,10 +13,11 @@ function Home() {
       <div className='home__row'>
         <Product
           id='12345867'
-          title="The lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Success"
-          price={11.39}
+          title="
+          EUREKA ERGONOMIC Z60 Gaming Desk 60'' Z Shaped Large PC Computer Gaming Desks Tables with RGB LED Lights Controller Stand and Mouse Pad for E-Sport Racing..."
+          price={222.39}
           rating={5}
-          image='https://images-na.ssl-images-amazon.com/images/I/51T-sMqSMiL._SX329_BO1,204,203,200_.jpg'
+          image='https://images-na.ssl-images-amazon.com/images/I/616jzVtP6cL._AC_SL1200_.jpg'
         />
         <Product
           id='123422346'
@@ -44,10 +45,10 @@ function Home() {
         />
         <Product
           id='12345855'
-          title='Soundance Laptop Stand, Aluminum Computer Riser, Ergonomic Laptops Elevator for Desk, Metal Holder'
-          price={11.39}
+          title='AmazonBasics Lightweight On-Ear Wired Headphones, Green'
+          price={15.99}
           rating={5}
-          image='https://images-na.ssl-images-amazon.com/images/I/51T-sMqSMiL._SX329_BO1,204,203,200_.jpg'
+          image='https://images-na.ssl-images-amazon.com/images/I/71xYdqrL9LL._AC_SL1500_.jpg'
         />
       </div>
       <div className='home__row'>
