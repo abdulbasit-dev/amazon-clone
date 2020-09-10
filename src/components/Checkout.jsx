@@ -3,9 +3,10 @@ import {BasketContext} from '../StateProvider'
 import './Checkout.css'
 import CheckoutBasket from './CheckoutProduct'
 import Subtotal from './Subtotal'
+import FlipMove from 'react-flip-move'
 
 function Checkout() {
-  const [{basket}] = useContext(BasketContext)
+  const [{basket, user}] = useContext(BasketContext)
 
   return (
     <div className='checkout'>
@@ -25,10 +26,13 @@ function Checkout() {
           </div>
         ) : (
           <div>
+            {user && <h2 className='checkout__title'>Hello {user?.displayName}</h2>}
             <h2 className='checkout__title'>Your Shoping Basket</h2>
-            {basket.map(item => (
-              <CheckoutBasket item={item} key={item.id} />
-            ))}
+            <FlipMove enterAnimation='elevator' leaveAnimation='elevator'>
+              {basket.map(item => (
+                <CheckoutBasket item={item} key={item.id} />
+              ))}
+            </FlipMove>
           </div>
         )}
       </div>

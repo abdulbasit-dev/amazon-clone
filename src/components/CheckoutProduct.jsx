@@ -1,8 +1,8 @@
-import React, {useContext} from 'react'
+import React, {forwardRef, useContext} from 'react'
 import './CheckoutProduct.css'
 import {BasketContext, ACTIONS} from '../StateProvider'
 
-function CheckoutProduct({item}) {
+const CheckoutProduct = forwardRef(({item}, ref) => {
   const {id, title, image, price, rating} = item
   const [, dispatch] = useContext(BasketContext)
 
@@ -11,7 +11,7 @@ function CheckoutProduct({item}) {
   }
 
   return (
-    <div className='checkoutProduct'>
+    <div className='checkoutProduct' ref={ref}>
       <img src={image} alt='' className='checkoutProduct__image' />
       <div className='checkoutProduct__info'>
         <p className='checkoutProduct__title'>{title}</p>
@@ -33,6 +33,5 @@ function CheckoutProduct({item}) {
       </div>
     </div>
   )
-}
-
+})
 export default CheckoutProduct

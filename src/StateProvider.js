@@ -17,7 +17,16 @@ function reducer(state, action) {
     case ACTIONS.ADD_TO_BASKET:
       return {...state, basket: [...state.basket, action.payload.item]}
     case ACTIONS.REMOVE_FROM_BASKET:
-      return {...state, basket: state.basket.filter(item => item.id !== action.id)}
+      //we clone the basket
+      let newBasket = [...state.basket]
+      const index = state.basket.findIndex(basketItem => basketItem.id === action.id)
+      if (index >= 0) {
+        //if exsits remove from the basket
+        newBasket.splice(index, 1)
+      } else {
+        console.warn('can not remove item')
+      }
+      return {...state, basket: newBasket}
     case ACTIONS.SET_USER:
       return {...state, user: action.user}
     default:

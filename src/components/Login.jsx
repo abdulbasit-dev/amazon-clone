@@ -3,17 +3,12 @@ import './Login.css'
 import {Link, useHistory} from 'react-router-dom'
 import {auth} from '../firebase'
 
-import {makeStyles} from '@material-ui/core/styles'
+import {makeStyles, easing} from '@material-ui/core/styles'
 import Modal from '@material-ui/core/Modal'
 
-//Modal Form
-function rand() {
-  return Math.round(Math.random() * 20) - 10
-}
-
 function getModalStyle() {
-  const top = 50 + rand()
-  const left = 50 + rand()
+  const top = 50
+  const left = 50
 
   return {
     top: `${top}%`,
@@ -35,8 +30,13 @@ const useStyles = makeStyles(theme => ({
 function Login() {
   const history = useHistory()
   const [email, setEmail] = useState('')
-  const [username, setUsername] = useState('')
+
   const [password, setPassword] = useState('')
+  const [signUp, setSignUp] = useState({
+    email: '',
+    password: '',
+    username: '',
+  })
 
   function login(e) {
     e.preventDefault()
@@ -54,11 +54,11 @@ function Login() {
     e.preventDefault()
     //firebase handele create acount
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(signUp.email, signUp.password)
       .then(auth => {
         //acount created , redirect to homepage
         auth.user.updateProfile({
-          displayName: username,
+          displayName: signUp.username,
         })
         history.push('/')
       })
@@ -118,11 +118,23 @@ function Login() {
             <h1>Sign Up</h1>
             <form action=''>
               <h5>Username</h5>
-              <input type='username' value={username} onChange={e => setUsername(e.target.value)} />
+              <input
+                type='username'
+                value={signUp.username}
+                onChange={e => setSignUp({...signUp, username: e.target.value})}
+              />
               <h5>Email</h5>
-              <input type='email' value={email} onChange={e => setEmail(e.target.value)} />
+              <input
+                type='email'
+                value={signUp.email}
+                onChange={e => setSignUp({...signUp, email: e.target.value})}
+              />
               <h5>Password</h5>
-              <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
+              <input
+                type='password'
+                value={signUp.password}
+                onChange={e => setSignUp({...signUp, password: e.target.value})}
+              />
 
               <button type='submit' onClick={register} className='login__signInButton'>
                 Sign Up
